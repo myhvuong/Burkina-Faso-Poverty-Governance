@@ -30,4 +30,6 @@ I conducted a background literature review to inform variable selection and ensu
 
 I carefully ordered `mutate()` operations to prioritize stronger conditions by placing them at the end, ensuring that they override weaker conditions. For instance, even if the round-trip time to access water is less than 30 minutes, a household is still considered deprived if their water source is unclean.
 
+### Data Availabity
 
+Note: The input data used in this script is not included in this repository due to confidentiality restrictions.

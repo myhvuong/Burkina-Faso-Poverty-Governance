@@ -6,7 +6,7 @@ This repository showcases an example of the work I independently completed as pa
 
 Included here is an R script for cleaning and preparing **Living Standards Metrics**, which is one of the three key components of the **Multidimensional Poverty Index (MPI)** along with health and education. These metrics are crucial for a comprehensive understanding of poverty at the household level. This process helped construct the final MPI metrics for our analysis, which supported the creation of our final deliverables: a comprehensive policy memo and a presentation tailored for a non-technical stakeholder audience.
 
-## Process for Cleaning Household Survey Data
+## Key Processes for Cleaning Household Survey Data
 
 The **Living Standards** script follow a structured approach to processing household survey data. The key steps include:
 

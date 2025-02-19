@@ -17,7 +17,7 @@ I conducted a background literature review to inform variable selection and ensu
 
 ### Creating Household Identifiers
 
-* I created the `create_household_variable` function to generate a unique household identifier by concatenating `grappe`, `menage`, and `vague`, which are geographical identifiers at different administrative levels. This enables seamless merging with cleaned health and education tables for constructing the final household MPI metrics. The function is designed for scalability and generalizability and was also used in cleaning other poverty metrics (not shown in this repo).
+* I created the `create_household_variable` function to generate a unique household identifier by concatenating `grappe`, `menage`, and `vague`, which are geographical identifiers at different administrative levels. This enables seamless merging with cleaned health and education tables for constructing the final household MPI metrics. The function is designed for scalability and generalizability and can be used for other parts of the project.
 
 
 ### Handling Missing Values (NAs)

@@ -1,6 +1,6 @@
 # Policy Lab Project: Analyzing the Linkage Between Local Poverty and Governance Perceptions in Burkina Faso
 
-### Repository Overview
+## Repository Overview
 
 This repository showcases an example of the work I independently completed as part of the Harris Policy Lab Project, where I, along with five teammates, served as policy consultants under faculty supervision for our client, the United Nations Development Programme (UNDP). The project's focus was on analyzing disparities in local poverty and its connections with governance perceptions in Burkina Faso to guide the UNDP's resource allocation decisions. 
 

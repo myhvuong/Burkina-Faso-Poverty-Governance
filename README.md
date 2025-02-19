@@ -30,5 +30,11 @@ Before processing, we conduct a background literature review to inform variable 
 
 After these intitial steps, the scripts diverge in their specific processing tasks:
 
-### Living Standards Script
+### Living Standards Script Key Steps
+
+* **Handling Missing Values (NAs):** 
+
+  * **Using Available Seasonal Data:** Pragmatically handle missing time cost data by using available time costs from either the dry or wet season to determine overall deprivation status, preventing unnecessary data loss. This approach recognizes that good access in one season might offset poorer access in another. Without this handling, any NA in either season could default to deprivation, potentially overestimating the number of households considered deprived.
+    
+  * **Imputing Missing Time Cost as 0:** Missing time costs were imputed as 0 for household accessing water in-house, from their yard, or from a neighbor, ensuring that these cases were not mistakenly classified as deprived due to missing travel time data and significantly reduce data loss — accounting for 90% of the NAs in the dataset.
 

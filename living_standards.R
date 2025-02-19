@@ -11,13 +11,9 @@ output_path <- "/Users/macbook/Documents/GitHub/Burkina-Faso-Poverty-Governance/
 ### Load datasets and construct IDs ###
 # Individual data with unique household identifiers
 ehcvm_individu_bfa2021 <- read_dta(file.path(base_path, "ehcvm_individu_bfa2021.dta"))
-basic_id <- ehcvm_individu_bfa2021 %>%
-  mutate(household_ID = paste(grappe, menage, vague, sep = "_")) %>%
-  select(household_ID, region, province, commune) %>%
-  distinct()
-
 # Survey data
 s11 <- read_dta(file.path(base_path, "s11_me_bfa2021.dta"))
+
 
 # Function to create a household variable
 create_household_variable <- function(df) {
@@ -28,6 +24,10 @@ create_household_variable <- function(df) {
 }
 
 s11 <- create_household_variable(s11) 
+basic_id <- create_household_variable(ehcvm_individu_bfa2021) %>%
+  select(household_ID, region, province, commune) %>%
+  distinct()
+
 
 # Select relevant columns from s11
 s11_selected <- s11 %>% 
@@ -48,9 +48,9 @@ s11_selected <- s11_selected %>%
 # Sanitation Deprivation
 s11_selected$s11q54_autre <- tolower(s11_selected$s11q54_autre)
 s11_selected <- s11_selected %>% 
-  mutate(sanitation_deprived = ifelse(s11q54 %in% 8:12, 1, 0),
-         sanitation_deprived = ifelse(s11q54_autre %in% c('latrine biodigesteur', 'latrine vip une fosse', 'latrines vip double fosse'), 0, sanitation_deprived),
-         sanitation_deprived = ifelse(s11q55 == 1, 1, sanitation_deprived)
+  mutate(sanitation_deprived = if_else(s11q54 %in% 8:12, 1, 0),
+         sanitation_deprived = if_else(s11q54_autre %in% c('latrine biodigesteur', 'latrine vip une fosse', 'latrines vip double fosse'), 0, sanitation_deprived),
+         sanitation_deprived = if_else(s11q55 == 1, 1, sanitation_deprived)
          )
 
 
@@ -61,29 +61,29 @@ s11_selected <- s11_selected %>%
     s11q28a = s11q28a*2, 
     s11q30a = s11q30a*2,
     # Handle NA - Assigning time cost of 0 if households get water in-house/yard/from neighbor
-    s11q28a = ifelse(s11q26a %in% c(1:3, 5, 7, 9), 0, s11q28a),
-    s11q30a = ifelse(s11q26a %in% c(1:3, 5, 7, 9), 0, s11q30a),
+    s11q28a = if_else(s11q26a %in% c(1:3, 5, 7, 9), 0, s11q28a),
+    s11q30a = if_else(s11q26a %in% c(1:3, 5, 7, 9), 0, s11q30a),
     # Determine water deprivation based on the round-trip time exceeding 30 minutes
-    water_deprived = ifelse(s11q28a > 30 | s11q30a > 30, 1, 0),
+    water_deprived = if_else(s11q28a > 30 | s11q30a > 30, 1, 0),
     # Handle NA - non-deprived if either season's round-trip is <= 30 minutes
     water_deprived = case_when(
       is.na(s11q28a) & !is.na(s11q30a) & s11q30a <= 30 ~ 0,
       !is.na(s11q28a) & is.na(s11q30a) & s11q28a <= 30 ~ 0,
       TRUE ~ water_deprived),
     # Even if time cost is < 30, deprived if water is unclean
-    water_deprived = ifelse(s11q26a %in% c(6, 9, 10, 12, 13, 18), 1, water_deprived)
+    water_deprived = if_else(s11q26a %in% c(6, 9, 10, 12, 13, 18), 1, water_deprived)
     )
 
 
 # Electricity Deprivation
 s11_selected <- s11_selected %>% 
-  mutate(electricity_deprived = ifelse(s11q33 == 4, 1, 0)) 
+  mutate(electricity_deprived = if_else(s11q33 == 4, 1, 0)) 
 
 # Housing Material Deprivation
 s11_selected <- s11_selected %>%
   mutate(s11q18_autre = tolower(s11_selected$s11q18_autre),
          # Replace irrelevant wall values with NA
-         s11q18_autre = ifelse(s11q18_autre %in% c('cecco', 'pompe', 'pas de mrs pour le moment'), NA_character_, s11q18_autre),
+         s11q18_autre = if_else(s11q18_autre %in% c('cecco', 'pompe', 'pas de mrs pour le moment'), NA_character_, s11q18_autre),
          # Wall
          wall_deprived = if_else(s11q18 %in% c(6, 7, 8), 1, 0),
          wall_deprived = if_else(s11q18_autre == 'grillage', 0, wall_deprived),
@@ -91,7 +91,7 @@ s11_selected <- s11_selected %>%
          floor_deprived = if_else(s11q20 %in% 3:5, 1, 0),
          # Roof
          roof_deprived = if_else(s11q19 %in% c(4, 5, 6, 8), 1, 0),
-         roof_deprived = if_else(s11q19_autre == 'Tôles, pailles', 0, wall_deprived)
+         roof_deprived = if_else(s11q19_autre == 'Tôles, pailles', 0, roof_deprived)
   )
 
 # Aggregate deprivation across housing components to determine overall housing deprivation

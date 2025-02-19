@@ -10,7 +10,7 @@ Included here is an R script for cleaning and preparing **Living Standards Metri
 
 The **Living Standards** script follow a structured approach to processing household survey data. The key steps include:
 
-### Indentifying Relevant Data Files
+### Indentifying Relevant Data Files and Fields
 
 Conducted a background literature review to inform variable selection and ensure that variable matching aligns with established methodologies. This script systematically classifies household deprivations across dimensions such as fuel, water, sanitation, electricity, and housing, following the MPI framework established by the Oxford Poverty and Human Development Initiative (OPHI) and UNDP.
 

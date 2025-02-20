@@ -6,7 +6,7 @@ library(haven)
 library(foreign)
 
 base_path <- "/Users/macbook/Documents/GitHub/Burkina-Faso-Poverty-Governance/2021 Data"
-output_path <- "/Users/macbook/Documents/GitHub/Burkina-Faso-Poverty-Governance/Cleaned Data"
+output_path <- "/Users/macbook/Documents/GitHub/Burkina-Faso-Poverty-Governance"
 
 ### Load datasets and construct IDs ###
 # Individual data with unique household identifiers

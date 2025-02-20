@@ -4,7 +4,7 @@
 
 This repository showcases an example of the work I independently completed as part of the Harris Policy Lab Project, where I, along with five teammates, served as policy consultants under faculty supervision for our client, the United Nations Development Programme (UNDP). The project's focus was on analyzing disparities in local poverty and its connections with governance perceptions in Burkina Faso to guide the UNDP's resource allocation decisions. 
 
-Included here is an R script for cleaning and preparing **Living Standards Metrics**, which is one of the three key components of the **Multidimensional Poverty Index (MPI)** along with health and education. These metrics are crucial for a comprehensive understanding of poverty at the household level. This process helped construct the final MPI metrics for our analysis, which supported the creation of our final deliverables: a comprehensive policy memo and a presentation tailored for a non-technical stakeholder audience.
+Included here is an R script for cleaning and preparing the **Living Standards Metric**, a key component of the **Multidimensional Poverty Index (MPI)**, along with a cleaned final dataset. This metric, alongside health and education, is crucial for a comprehensive understanding of poverty at the household level. This process helped construct the final MPI metrics for our analysis, which supported the creation of our final deliverables: a comprehensive policy memo and a presentation tailored for a non-technical stakeholder audience.
 
 ## Key Processes for Cleaning Household Survey Data
 
@@ -30,4 +30,6 @@ I conducted a background literature review to inform variable selection and ensu
 
 I carefully ordered `mutate()` operations to prioritize stronger conditions by placing them at the end, ensuring that they override weaker conditions. For instance, even if the round-trip time to access water is less than 30 minutes, a household is still considered deprived if their water source is unclean.
 
+### Data Availabity
 
+Note: The input data used in this script is not included in this repository due to confidentiality restrictions.

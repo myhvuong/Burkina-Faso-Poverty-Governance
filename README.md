@@ -4,7 +4,7 @@
 
 This repository showcases an example of the work I independently completed as part of the Harris Policy Lab Project, where I, along with five teammates, served as policy consultants under faculty supervision for our client, the United Nations Development Programme (UNDP). The project's focus was on analyzing disparities in local poverty and its connections with governance perceptions in Burkina Faso to guide the UNDP's resource allocation decisions. 
 
-Included here is an R script for cleaning and preparing **Living Standards Metrics**, a key component of the **Multidimensional Poverty Index (MPI)**, along with a cleaned final dataset. This metric, alongside health and education, is crucial for a comprehensive understanding of poverty at the household level. This process helped construct the final MPI metrics for our analysis, which supported the creation of our final deliverables: a comprehensive policy memo and a presentation tailored for a non-technical stakeholder audience.
+Included here is an R script for cleaning and preparing the **Living Standards Metric**, a key component of the **Multidimensional Poverty Index (MPI)**, along with a cleaned final dataset. This metric, alongside health and education, is crucial for a comprehensive understanding of poverty at the household level. This process helped construct the final MPI metrics for our analysis, which supported the creation of our final deliverables: a comprehensive policy memo and a presentation tailored for a non-technical stakeholder audience.
 
 ## Key Processes for Cleaning Household Survey Data
 
